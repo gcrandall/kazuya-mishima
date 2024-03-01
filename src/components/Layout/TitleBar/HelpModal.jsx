@@ -30,9 +30,8 @@ function FighterDetails(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <h2>What is this?</h2>
-                    <p>
-                        KazuyaMishima.com is a web app meant to provide easy access to matchup-specific information for Kazuya in Super Smash Bros. Ultimate.
-                    </p>
+                    <p>KazuyaMishima.com is a web app meant to provide easy access to matchup-specific information for Kazuya in Super Smash Bros. Ultimate.</p>
+                    <p>To see how it works, check out the public <a href="https://github.com/gcrandall/kazuya-mishima" target="_blank">GitHub repository</a>.</p>
                     <br />
 
                     <h2>How to use</h2>
