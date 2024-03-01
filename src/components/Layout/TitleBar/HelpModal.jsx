@@ -31,13 +31,11 @@ function FighterDetails(props) {
                 <Modal.Body>
                     <h2>What is this?</h2>
                     <p>KazuyaMishima.com is a web app meant to provide easy access to matchup-specific information for Kazuya in Super Smash Bros. Ultimate.</p>
-                    <p>To see how it works, check out the public <a href="https://github.com/gcrandall/kazuya-mishima" target="_blank">GitHub repository</a>.</p>
+                    <p>To see how it works, check out the public <a href="https://github.com/gcrandall/kazuya-mishima" target="_blank" rel="noreferrer">GitHub repository</a>.</p>
                     <br />
 
                     <h2>How to use</h2>
-                    <p>
-                        Simply choose a character from the grid, using search and filter options if needed. Clicking a character's tile will bring up their details page with all of the information related to that character.
-                    </p>
+                    <p>Simply choose a character from the grid, using search and filter options if needed. Clicking a character's tile will bring up their details page with all of the information related to that character.</p>
                     <br />
 
                     <h2>How to read character tiles</h2>
