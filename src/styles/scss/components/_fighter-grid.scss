@@ -1,0 +1,10 @@
+.c-fighter-grid {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    .container {
+        .row {
+            --bs-gutter-x: 1rem;
+		    --bs-gutter-y: 1rem;
+        }
+    }
+}

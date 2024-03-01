@@ -1,0 +1,61 @@
+.c-controls {
+    background-color: $controls-bg;
+    @include responsive-properties((
+        padding-block:		(1.5rem, 2rem, 3rem)
+    ));
+
+    &__search {}
+
+    &__sort {
+        $reverse-btn-width: 2.5rem;
+        $reverse-btn-margin: 0.5rem;
+        max-width: 100%;
+        .input-field {
+            width: calc(100% - $reverse-btn-width - $reverse-btn-margin);
+            flex-grow: 1;
+            flex-shrink: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &-reverse {
+            flex-grow: 0;
+            flex-shrink: 0;
+            width: $reverse-btn-width;
+            padding: 0;
+            margin-left: $reverse-btn-margin;
+            i {
+                display: inline-block;
+                transition: 0.3s all;
+            }
+            &.reversed {
+                i {
+                    transform: rotateX(180deg);
+                }
+            }
+        }
+    }
+
+    &__clear {
+        width: auto !important;
+        .btn {
+            @include media-breakpoint-up(md) {
+                min-width: 10rem;
+            }
+        }
+    }
+
+    .container {
+        .row {
+            --bs-gutter-x: 1rem;
+		    --bs-gutter-y: 1rem;
+            &>div {
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                .input-container {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

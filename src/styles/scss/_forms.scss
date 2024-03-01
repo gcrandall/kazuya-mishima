@@ -1,0 +1,74 @@
+$input-color: $body-color-lighter;
+$input-highlight-color: $body-color;
+
+$input-height: 2.5rem;
+
+.input-container {
+    position: relative;
+    margin-top: 1.25rem;
+    display: flex;
+    .input-label {
+        position: absolute;
+        top: -1.25rem;
+        left: 0;
+    }
+    .input-field {
+        flex-grow: 1;
+        flex-shrink: 1;
+        &+.btn {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+    }
+    .field-icon {}
+}
+
+.input-label {
+    font-size: 0.75rem;
+    height: 1rem;
+    width: 100%;
+    text-align: left;
+    text-transform: uppercase;
+    color: $input-color;
+}
+
+.input-field,
+.btn {
+    font-family: $font-family-base;
+    outline: none;
+    border: 2px solid $input-color;
+    border-radius: 0;
+    background-color: transparent;
+    color: $input-color;
+    transition: all 0.3s;
+    text-transform: uppercase;
+
+    line-height: 1;
+    padding: 0.3rem 0.6rem;
+    height: $input-height;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $input-highlight-color;
+        border-color: $input-highlight-color;
+    }
+
+    option {
+        color: initial;
+    }
+}
+
+.btn {
+    &:active {
+        color: $input-color;
+        border-color: $input-color;
+    }
+}
+
+button {
+    background-color: transparent;
+}

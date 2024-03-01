@@ -1,0 +1,23 @@
+.l-footer {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8rem;
+    color: $body-color-lighter;
+    @include responsive-properties((
+    	padding-top:		(1.5rem, 2rem, 2.5rem),
+        padding-bottom:		(1.5rem, 2rem, 2.5rem)
+    ));
+    &__credits {
+        // &::before {
+        //     content: "---";
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     margin-bottom: 0.5rem;
+        // }
+        a {
+            display: inline-block;
+            margin-inline: 0.2rem;
+        }
+    }
+}

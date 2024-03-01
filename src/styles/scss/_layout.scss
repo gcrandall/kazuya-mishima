@@ -1,0 +1,11 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh) !important;
+    margin: 0;
+    padding: 0;
+    @include responsive-properties((
+        padding-top:		($header-height-mobile, $header-height, null),
+        min-height:		(calc(100vh - $header-height-mobile), calc(100vh - $header-height), null)
+    ));
+}

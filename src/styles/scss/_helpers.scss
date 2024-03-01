@@ -1,0 +1,182 @@
+//--------------------------------------------------
+// TEXT COLORS
+//--------------------------------------------------
+
+.text-yes {
+	color: $yes-color !important;
+}
+
+.text-no {
+	color: $no-color !important;
+}
+
+.text-depends {
+	color: $depends-color !important;
+}
+
+.text-light {
+	color: rgba($body-color, 0.3) !important;
+}
+
+// ------------------------------------
+// RESPONSIVE MIXINS
+// ------------------------------------
+
+	// All-Purpose Responsive Mixin
+	//
+	//		USAGE:
+	//		--------------------
+	//		Declare your value map first, within the scope of your targeted selector, and pass it into the mixin.
+	//
+	//		An optional list of breakpoints can be passed in that will determine how your value map is read.
+	//		This mixin is mobile first, so the first value is always mobile which serves as the default style,
+	//		then breakpoints in the order of the breakpoints list.
+	//		By default, the breakpoints list is (md, xl) which means the values in the map should be in the format: (mobile, md, xl).
+	//		Rules will apply at their respective breakpoint or above, using Bootstrap's media-breakpoint-up mixin.
+	//
+	//		If no value should be applied at a given breakpoint, set the respective value to null.
+	//		If a property requires multiple values at each breakpoint (shadows, etc.), surround each set with parenthesis.
+	//		If the property should be important, add !important as the last element of that property's list.
+	//
+	//		Make sure each property has the correct number of values (number of specified breakpoints + 1) or the mixin will result in an error.
+	//			
+	//			.test-class {
+	//				@include responsive-properties((
+	//					margin:			(10px, 20px, 25px, !important),
+	//					padding:		(15px, null, 30px),
+	//					box-shadow:		(
+	//						(60px -16px #FFFFFF),
+	//						(5px -5px rgba(0,0,0,0.8)),
+	//						null,
+	//						!important
+	//					)
+	//				));
+	//			}
+	//---------------------------------------------
+	@mixin responsive-properties($properties, $breakpoints: (md, xl)) {
+		// Index of optional !important value, based on number of breakpoints
+		$important-index:	(length($breakpoints) + 2);
+		
+		// Mobile (Default)
+		@each $prop, $values in $properties {
+			$val: nth($values, 1);
+			$important: null;
+			@if length($values) >= $important-index {
+				$important: nth($values, $important-index);
+			}
+			@if $val != null {
+				@if $prop == font-size {
+					@if $important != null {
+						@include font-size($val !important);
+					} @else {
+						@include font-size($val);
+					}
+				} @else {
+					#{$prop}: $val $important;
+				}
+			}
+		}
+		
+		// Loop through breakpoints
+		@each $bp in $breakpoints {
+			@include media-breakpoint-up($bp) {
+				$prop-value-index: index($breakpoints, $bp) + 1;
+				@each $prop, $values in $properties {
+					$val: nth($values, $prop-value-index);
+					$important: null;
+					@if length($values) >= $important-index {
+						$important: nth($values, $important-index);
+					}
+					@if $val != null {
+						@if $prop == font-size {
+							@if $important != null {
+								@include font-size($val !important);
+							} @else {
+								@include font-size($val);
+							}
+						} @else {
+							#{$prop}: $val $important;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// Font Size
+	//		Not based on responsive base mixin so it can utilize
+	//		Bootstrap's font-size mixin
+	//---------------------------------------------
+	@mixin font-size-responsive($mobile, $tablet, $desktop, $important: null) {
+		@if $important != null {
+			@include font-size($mobile !important);
+			@if $tablet != null {
+				@include media-breakpoint-up(md) {
+					@include font-size($tablet !important);
+				}
+			}
+			@if $desktop != null {
+				@include media-breakpoint-up(xl) {
+					@include font-size($desktop !important);
+				}
+			}
+		} @else {
+			@include font-size($mobile);
+			@if $tablet != null {
+				@include media-breakpoint-up(md) {
+					@include font-size($tablet);
+				}
+			}
+			@if $desktop != null {
+				@include media-breakpoint-up(xl) {
+					@include font-size($desktop);
+				}
+			}
+		}
+	}
+
+
+// ------------------------------------
+// UI
+// ------------------------------------
+
+	// Responsive Hide Mixins
+	//---------------------------------------------
+	@mixin hide-above($breakpoint) {
+		@include media-breakpoint-up($breakpoint) {
+			display: none;
+		}
+	}
+
+	@mixin hide-below($breakpoint) {
+		@include media-breakpoint-down($breakpoint) {
+			display: none;
+		}
+	}
+
+
+// ------------------------------------
+// MISC
+// ------------------------------------
+
+	// Background Image Cover Mixin
+	//---------------------------------------------
+	@mixin bg-img-cover {
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	// Background Helper Element Mixin
+	//---------------------------------------------
+	@mixin bg-element {
+		position: absolute;
+		display: block;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+	}

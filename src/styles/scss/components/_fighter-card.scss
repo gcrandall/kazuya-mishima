@@ -1,0 +1,120 @@
+.c-fighter-card {
+    $card-padding: .75rem;
+    $hover-transition-speed: 0.3s;
+    z-index: 1;
+    isolation: isolate;
+    backface-visibility: hidden;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 7rem;
+    background-color: $card-bg;
+    overflow: hidden;
+    text-transform: uppercase;
+    outline: 2px solid rgba(255, 255, 255, 0);
+    transition: $hover-transition-speed all;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+    &:hover,
+    &:focus {
+        z-index: 2;
+        outline-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 40%);
+        .c-fighter-card__stage {
+            opacity: 1;
+        }
+        @include media-breakpoint-up(md) {
+            scale: 1.02;
+        }
+    }
+    &:active {
+        scale: 1;
+        box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+    }
+    &::before {
+        content: "";
+        backface-visibility: hidden;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+        mix-blend-mode: darken;
+    }
+    &__portrait {
+        backface-visibility: hidden;
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        object-fit: cover;
+        object-position: left center;
+        height: 100%;
+        width: 100%;
+    }
+    &__stage {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        object-fit: cover;
+        object-position: center;
+        height: calc(100% + 1rem);
+        width: calc(100% + 1rem);
+        filter: blur(0.5rem);
+        transform: translate3d(0, 0, 0); // for blur performance
+        opacity: 0;
+        transition: $hover-transition-speed opacity;
+    }
+    &__title {
+        backface-visibility: hidden;
+        z-index: 2;
+        position: absolute;
+        line-height: 1;
+        left: $card-padding;
+        bottom: $card-padding;
+        color: $body-color !important;
+        margin: 0;
+    }
+    &__num {
+        font-weight: 700;
+        font-size: 1.75rem;
+        margin-right: 0.5rem;
+        text-transform: none;
+    }
+    &__name {
+        font-weight: 500;
+        font-style: italic;
+        font-size: 1.125rem;
+    }
+    &__stat {
+        backface-visibility: hidden;
+        z-index: 2;
+        position: absolute;
+        bottom: $card-padding;
+        right: $card-padding;
+        line-height: 1;
+        color: $body-color-lighter !important;
+        text-align: right;
+        .small {
+            font-size: 0.75rem;
+        }
+    }
+    &__badge {
+        backface-visibility: hidden;
+        z-index: 2;
+        position: absolute;
+        top: $card-padding;
+        right: $card-padding;
+        line-height: 1;
+        color: $body-color !important;
+        &::before {
+            content: "\2605"; // &#9733; (star)
+        }
+    }
+}

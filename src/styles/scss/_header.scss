@@ -1,0 +1,52 @@
+.l-header {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    background-image: url("../assets/images/titlebar.webp");
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 40%);
+    @include responsive-properties((
+    	height:		($header-height-mobile, $header-height, null)
+    ));
+
+    &__logo {
+        @include responsive-properties((
+            height:		(2rem, 3.125rem, null)
+        ));
+    }
+
+    &__help {
+        $help-height-mobile: calc($header-height-mobile - 1rem);
+        $help-height: calc($header-height - 1.5rem);
+        position: absolute;
+        right: 0.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $body-color-lighter;
+        transition: 0.3s all;
+        outline: none;
+        border: none;
+        border-radius: 50%;
+        @include responsive-properties((
+            height:		($help-height-mobile, $help-height, null),
+            width:		($help-height-mobile, $help-height, null)
+        ));
+        &:hover {
+            color: $body-color;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        i {
+            @include responsive-properties((
+                font-size:		(1.25rem, 1.5rem, null)
+            ));
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "KazuyaMishima.com",
+    "short_name": "KazuyaMishima.com",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#5c6bc0",
+    "background_color": "#5c6bc0",
+    "start_url": "https://kazuyamishima.com",
+    "display": "standalone"
+}
